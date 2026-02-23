@@ -22,10 +22,15 @@ public class VennDiagram<T> implements Addable<T> {
     }
 
     private Set<T> getCircleForLabel(String label) {
+        // Adding some error handling for null labels
+        if (label == null) {
+            throw new IllegalArgumentException("Label cannot be null");
+        }
         if (label.equals(label1)) return circle1;
         if (label.equals(label2)) return circle2;
         if (label.equals(label3)) return circle3;
-        return Set.of();
+        // Adding error handling for unknown labels
+        throw new IllegalArgumentException("Unknown label: " + label);
     }
 
     @Override

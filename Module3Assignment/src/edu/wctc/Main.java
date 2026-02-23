@@ -42,31 +42,30 @@ public class Main {
 //        System.out.println(foodDiagram.diagramCenter());
 
 
+        // Changed to colors instead of even, prime, and Fibonacci numbers.
 
-        String evens = "evens";
-        String primes = "primes";
-        String fibonacci = "fibonacci";
+        String red = "red";
+        String yellow = "yellow";
+        String blue = "blue";
 
-        VennDiagram<String> numberDiagram = new VennDiagram<>(evens, primes, fibonacci);
 
-        numberDiagram.add("1", fibonacci);
-        numberDiagram.add("2", evens, primes, fibonacci);
-        numberDiagram.add("3", primes, fibonacci);
-        numberDiagram.add("4", evens);
-        numberDiagram.add("5", primes, fibonacci);
-        numberDiagram.add("6", evens);
-        numberDiagram.add("7", primes);
-        numberDiagram.add("8", evens, fibonacci);
-        numberDiagram.add("9");
-        numberDiagram.add("10", evens);
+        VennDiagram<String> colorDiagram = new VennDiagram<>(red, yellow, blue);
 
-        // evens OR primes
-        System.out.println(numberDiagram.unionOf(evens, primes));
-        // primes AND fibonacci
-        System.out.println(numberDiagram.intersectionOf(primes, fibonacci));
-        // fibonacci but NOT evens
-        System.out.println(numberDiagram.complementOf(fibonacci, evens));
+        colorDiagram.add("Red", red);
+        colorDiagram.add("Yellow", yellow);
+        colorDiagram.add("Blue", blue);
+        colorDiagram.add("Orange", red, yellow);
+        colorDiagram.add("Green", yellow, blue);
+        colorDiagram.add("Purple", red, blue);
+        colorDiagram.add("Brown", red, yellow, blue);
+
+        // red OR yellow
+        System.out.println(colorDiagram.unionOf(red, yellow));
+        // yellow AND blue
+        System.out.println(colorDiagram.intersectionOf(yellow, blue));
+        // blue but NOT red
+        System.out.println(colorDiagram.complementOf(blue, red));
         // all three
-        System.out.println(numberDiagram.diagramCenter());
+        System.out.println(colorDiagram.diagramCenter());
     }
 }
